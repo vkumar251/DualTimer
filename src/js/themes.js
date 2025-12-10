@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () =>
     {
     }
 });
+
 cyanButton.addEventListener("click", () => {cyanMode();});
 emeraldButton.addEventListener("click", () => {emeraldMode();});
 yellowButton.addEventListener("click", () => {yellowMode();});
@@ -140,7 +141,164 @@ function cyanMode()
     // stopwatch page
     if (document.getElementById("stopwatch-page"))
     {
+        const switchCards = () => 
+        {
+            const bgClass = ["bg-cyan-400", "bg-cyan-500", "bg-cyan-600", "bg-cyan-700", "bg-cyan-800", "bg-cyan-900", "bg-cyan-950"];
 
+            // progress bar
+            const progressBar = () => 
+            {
+                const bar = document.getElementById("stopwatch-bar");
+                bar.classList.replace(bar.classList[3], bgClass[6]);
+            }
+            // stopwatch
+            const stopwatch = () =>
+            {
+                let widget = function()
+                {
+                    const w = document.getElementById("stopwatch-widget");
+                    w.classList.replace(w.classList[1], "border-cyan-950");
+                    w.classList.replace(w.classList[7], bgClass[5]);
+                }
+                let buttons = function()
+                {
+                    const btnList = ["start-stopwatch", "stop-stopwatch", "reset-stopwatch", "lap-stopwatch"];
+
+                    let x = 0;
+                    while (x < btnList.length)
+                    {
+                        document.querySelector(`#${btnList[x]}`).classList.replace(document.getElementById(btnList[x]).classList[0], bgClass[2]);
+                        document.querySelector(`#${btnList[x]}`).classList.replace(document.getElementById(btnList[x]).classList[1], "hover:bg-cyan-700");
+                        x++;
+                    }
+                }
+                
+                widget();
+                buttons();
+            }
+            // lap card
+            const lapCard = () => 
+            {
+                const x = document.querySelector("#lap-card div");
+                const y = document.querySelector("#lap-card-div");
+
+                x.classList.replace(x.classList[0], bgClass[6]);
+                y.classList.replace(y.classList[0], bgClass[4]);
+            }
+            // set card
+            const setCard = () => 
+            {
+                const x = document.querySelector("#set-card div");
+                const y = document.querySelector("#set-card-div");
+
+                x.classList.replace(x.classList[0], bgClass[6]);
+                y.classList.replace(y.classList[0], bgClass[4]);
+
+                const inputs = ["input-hours", "input-minutes", "input-seconds", "input-mlseconds"];
+
+                let z = 0;
+                while (z < inputs.length)
+                {
+                    document.querySelector(`#${inputs[z]}`).classList.replace(document.getElementById(inputs[z]).classList[0], bgClass[3]);
+                    z++;
+                }
+            }
+            // set card - button
+            const setBtn = () => 
+            {
+                const btn = document.getElementById("set-stopwatch");
+                btn.classList.replace(btn.classList[0], bgClass[2]);
+                btn.classList.replace(btn.classList[1], "hover:bg-cyan-700");
+            }
+            
+            progressBar();
+            stopwatch();
+            lapCard();
+            setCard();
+            setBtn();
+        }
+
+        switchCards();
+    }
+
+    // timer page
+    if (document.getElementById("timer-page"))
+    {
+        const switchCards = () => 
+        {
+            const bgClass = ["bg-cyan-400", "bg-cyan-500", "bg-cyan-600", "bg-cyan-700", "bg-cyan-800", "bg-cyan-900", "bg-cyan-950"];
+
+            // timer
+            const timer = () => 
+            {
+                let widget = function()
+                {
+                    const w = document.getElementById("timer-widget");
+                    w.classList.replace(w.classList[7], bgClass[5])
+                    w.classList.replace(w.classList[1], "border-cyan-950");
+                }
+                let panels = function()
+                {
+                    const panel = 
+                    [
+                        document.getElementById("buttons-panel-1"),
+                        document.getElementById("buttons-panel-2"),
+                        document.getElementById("buttons-panel-3"),
+                    ];
+
+                    panel[0].classList.replace(panel[0].classList[0], bgClass[6]);
+                    panel[1].classList.replace(panel[1].classList[0], bgClass[4]);
+                    panel[2].classList.replace(panel[2].classList[0], bgClass[6]);
+                }
+                let buttons = function()
+                {
+                    let button = 
+                    [
+                        document.getElementById("start-timer"),
+                        document.getElementById("stop-timer"),
+                        document.getElementById("reset-timer"),
+                    ];
+
+                    // start button
+                    button[0].classList.replace(button[0].classList[0], bgClass[2]);
+                    button[0].classList.replace(button[0].classList[1], `hover:${bgClass[3]}`);
+
+                    // stop button
+                    button[1].classList.replace(button[1].classList[0], bgClass[2]);
+                    button[1].classList.replace(button[1].classList[1], `hover:${bgClass[3]}`);
+
+                    // reset button
+                    button[2].classList.replace(button[2].classList[0], bgClass[2]);
+                    button[2].classList.replace(button[2].classList[1], `hover:${bgClass[3]}`);
+                }
+                let pad = function()
+                {
+                    let button = [];
+
+                    for (let i = 0; i <= 9; i++)
+                    {
+                        // add number pads 0-9 to array
+                        button.push(document.getElementById(`button-${i}`));     
+                    }
+
+                    // change bg + hover colours of number pads 0-9
+                    button.forEach((ids) => 
+                    {
+                        ids.classList.replace(ids.classList[0], bgClass[2]);
+                        ids.classList.replace(ids.classList[1], `hover:${bgClass[3]}`);
+                    });  
+                }
+
+                widget();
+                panels();
+                buttons();
+                pad();
+            }
+
+            timer();
+        }
+
+        switchCards();
     }
 
     localStorage.setItem(themeType, "cyan");
@@ -211,8 +369,38 @@ function emeraldMode()
         const switchCards = () => 
         {
             const bgClass = ["bg-emerald-400", "bg-emerald-500", "bg-emerald-600", "bg-emerald-700", "bg-emerald-800", "bg-emerald-900", "bg-emerald-950"];
-            const borderClass = "border-emerald-950";
 
+            // progress bar
+            const progressBar = () => 
+            {
+                const bar = document.getElementById("stopwatch-bar");
+                bar.classList.replace(bar.classList[3], bgClass[6]);
+            }
+            // stopwatch
+            const stopwatch = () =>
+            {
+                let widget = function()
+                {
+                    const w = document.getElementById("stopwatch-widget");
+                    w.classList.replace(w.classList[1], "border-emerald-950");
+                    w.classList.replace(w.classList[7], bgClass[5]);
+                }
+                let buttons = function()
+                {
+                    const btnList = ["start-stopwatch", "stop-stopwatch", "reset-stopwatch", "lap-stopwatch"];
+
+                    let x = 0;
+                    while (x < btnList.length)
+                    {
+                        document.querySelector(`#${btnList[x]}`).classList.replace(document.getElementById(btnList[x]).classList[0], bgClass[2]);
+                        document.querySelector(`#${btnList[x]}`).classList.replace(document.getElementById(btnList[x]).classList[1], "hover:bg-emerald-700");
+                        x++;
+                    }
+                }
+                
+                widget();
+                buttons();
+            }
             // lap card
             const lapCard = () => 
             {
@@ -222,25 +410,117 @@ function emeraldMode()
                 x.classList.replace(x.classList[0], bgClass[6]);
                 y.classList.replace(y.classList[0], bgClass[4]);
             }
+            // set card
             const setCard = () => 
             {
+                const x = document.querySelector("#set-card div");
+                const y = document.querySelector("#set-card-div");
 
-                document.querySelectorAll("#set-card-div input").forEach(el => 
+                x.classList.replace(x.classList[0], bgClass[6]);
+                y.classList.replace(y.classList[0], bgClass[4]);
+
+                const inputs = ["input-hours", "input-minutes", "input-seconds", "input-mlseconds"];
+
+                let z = 0;
+                while (z < inputs.length)
                 {
-                    swapBgClass(el, "emerald", "700");
-                });
-
-                const header = document.querySelector("#set-card > div:first-child");
-                const body   = document.getElementById("set-card-div");
-
-                header.classList.replace("bg-cyan-950", "bg-emerald-950");
-                body.classList.replace("bg-cyan-800", "bg-emerald-800");
-
-                swapBg700("#set-card-div input", "emerald");
+                    document.querySelector(`#${inputs[z]}`).classList.replace(document.getElementById(inputs[z]).classList[0], bgClass[3]);
+                    z++;
+                }
+            }
+            // set card - button
+            const setBtn = () => 
+            {
+                const btn = document.getElementById("set-stopwatch");
+                btn.classList.replace(btn.classList[0], bgClass[2]);
+                btn.classList.replace(btn.classList[1], "hover:bg-emerald-700");
             }
             
-            lapCard(); 
+            progressBar();
+            stopwatch();
+            lapCard();
             setCard();
+            setBtn();
+        }
+
+        switchCards();
+    }
+
+    // timer page
+    if (document.getElementById("timer-page"))
+    {
+        const switchCards = () => 
+        {
+            const bgClass = ["bg-emerald-400", "bg-emerald-500", "bg-emerald-600", "bg-emerald-700", "bg-emerald-800", "bg-emerald-900", "bg-emerald-950"];
+
+            // timer
+            const timer = () => 
+            {
+                let widget = function()
+                {
+                    const w = document.getElementById("timer-widget");
+                    w.classList.replace(w.classList[7], bgClass[5])
+                    w.classList.replace(w.classList[1], "border-emerald-950");
+                }
+                let panels = function()
+                {
+                    const panel = 
+                    [
+                        document.getElementById("buttons-panel-1"),
+                        document.getElementById("buttons-panel-2"),
+                        document.getElementById("buttons-panel-3"),
+                    ];
+
+                    panel[0].classList.replace(panel[0].classList[0], bgClass[6]);
+                    panel[1].classList.replace(panel[1].classList[0], bgClass[4]);
+                    panel[2].classList.replace(panel[2].classList[0], bgClass[6]);
+                }
+                let buttons = function()
+                {
+                    let button = 
+                    [
+                        document.getElementById("start-timer"),
+                        document.getElementById("stop-timer"),
+                        document.getElementById("reset-timer"),
+                    ];
+
+                    // start button
+                    button[0].classList.replace(button[0].classList[0], bgClass[2]);
+                    button[0].classList.replace(button[0].classList[1], `hover:${bgClass[3]}`);
+
+                    // stop button
+                    button[1].classList.replace(button[1].classList[0], bgClass[2]);
+                    button[1].classList.replace(button[1].classList[1], `hover:${bgClass[3]}`);
+
+                    // reset button
+                    button[2].classList.replace(button[2].classList[0], bgClass[2]);
+                    button[2].classList.replace(button[2].classList[1], `hover:${bgClass[3]}`);
+                }
+                let pad = function()
+                {
+                    let button = [];
+
+                    for (let i = 0; i <= 9; i++)
+                    {
+                        // add number pads 0-9 to array
+                        button.push(document.getElementById(`button-${i}`));     
+                    }
+
+                    // change bg + hover colours of number pads 0-9
+                    button.forEach((ids) => 
+                    {
+                        ids.classList.replace(ids.classList[0], bgClass[2]);
+                        ids.classList.replace(ids.classList[1], `hover:${bgClass[3]}`);
+                    });  
+                }
+
+                widget();
+                panels();
+                buttons();
+                pad();
+            }
+
+            timer();
         }
 
         switchCards();
@@ -308,6 +588,169 @@ function yellowMode()
         switchCards();
     }
 
+    // stopwatch page
+    if (document.getElementById("stopwatch-page"))
+    {
+        const switchCards = () => 
+        {
+            const bgClass = ["bg-yellow-400", "bg-yellow-500", "bg-yellow-600", "bg-yellow-700", "bg-yellow-800", "bg-yellow-900", "bg-yellow-950"];
+
+            // progress bar
+            const progressBar = () => 
+            {
+                const bar = document.getElementById("stopwatch-bar");
+                bar.classList.replace(bar.classList[3], bgClass[6]);
+            }
+            // stopwatch
+            const stopwatch = () =>
+            {
+                let widget = function()
+                {
+                    const w = document.getElementById("stopwatch-widget");
+                    w.classList.replace(w.classList[1], "border-yellow-950");
+                    w.classList.replace(w.classList[7], bgClass[5]);
+                }
+                let buttons = function()
+                {
+                    const btnList = ["start-stopwatch", "stop-stopwatch", "reset-stopwatch", "lap-stopwatch"];
+
+                    let x = 0;
+                    while (x < btnList.length)
+                    {
+                        document.querySelector(`#${btnList[x]}`).classList.replace(document.getElementById(btnList[x]).classList[0], bgClass[2]);
+                        document.querySelector(`#${btnList[x]}`).classList.replace(document.getElementById(btnList[x]).classList[1], "hover:bg-yellow-700");
+                        x++;
+                    }
+                }
+                
+                widget();
+                buttons();
+            }
+            // lap card
+            const lapCard = () => 
+            {
+                const x = document.querySelector("#lap-card div");
+                const y = document.querySelector("#lap-card-div");
+
+                x.classList.replace(x.classList[0], bgClass[6]);
+                y.classList.replace(y.classList[0], bgClass[4]);
+            }
+            // set card
+            const setCard = () => 
+            {
+                const x = document.querySelector("#set-card div");
+                const y = document.querySelector("#set-card-div");
+
+                x.classList.replace(x.classList[0], bgClass[6]);
+                y.classList.replace(y.classList[0], bgClass[4]);
+
+                const inputs = ["input-hours", "input-minutes", "input-seconds", "input-mlseconds"];
+
+                let z = 0;
+                while (z < inputs.length)
+                {
+                    document.querySelector(`#${inputs[z]}`).classList.replace(document.getElementById(inputs[z]).classList[0], bgClass[3]);
+                    z++;
+                }
+            }
+            // set card - button
+            const setBtn = () => 
+            {
+                const btn = document.getElementById("set-stopwatch");
+                btn.classList.replace(btn.classList[0], bgClass[2]);
+                btn.classList.replace(btn.classList[1], "hover:bg-yellow-700");
+            }
+            
+            progressBar();
+            stopwatch();
+            lapCard();
+            setCard();
+            setBtn();
+        }
+
+        switchCards();
+    }
+
+    // timer page
+    if (document.getElementById("timer-page"))
+    {
+        const switchCards = () => 
+        {
+            const bgClass = ["bg-yellow-400", "bg-yellow-500", "bg-yellow-600", "bg-yellow-700", "bg-yellow-800", "bg-yellow-900", "bg-yellow-950"];
+
+            // timer
+            const timer = () => 
+            {
+                let widget = function()
+                {
+                    const w = document.getElementById("timer-widget");
+                    w.classList.replace(w.classList[7], bgClass[5])
+                    w.classList.replace(w.classList[1], "border-yellow-950");
+                }
+                let panels = function()
+                {
+                    const panel = 
+                    [
+                        document.getElementById("buttons-panel-1"),
+                        document.getElementById("buttons-panel-2"),
+                        document.getElementById("buttons-panel-3"),
+                    ];
+
+                    panel[0].classList.replace(panel[0].classList[0], bgClass[6]);
+                    panel[1].classList.replace(panel[1].classList[0], bgClass[4]);
+                    panel[2].classList.replace(panel[2].classList[0], bgClass[6]);
+                }
+                let buttons = function()
+                {
+                    let button = 
+                    [
+                        document.getElementById("start-timer"),
+                        document.getElementById("stop-timer"),
+                        document.getElementById("reset-timer"),
+                    ];
+
+                    // start button
+                    button[0].classList.replace(button[0].classList[0], bgClass[2]);
+                    button[0].classList.replace(button[0].classList[1], `hover:${bgClass[3]}`);
+
+                    // stop button
+                    button[1].classList.replace(button[1].classList[0], bgClass[2]);
+                    button[1].classList.replace(button[1].classList[1], `hover:${bgClass[3]}`);
+
+                    // reset button
+                    button[2].classList.replace(button[2].classList[0], bgClass[2]);
+                    button[2].classList.replace(button[2].classList[1], `hover:${bgClass[3]}`);
+                }
+                let pad = function()
+                {
+                    let button = [];
+
+                    for (let i = 0; i <= 9; i++)
+                    {
+                        // add number pads 0-9 to array
+                        button.push(document.getElementById(`button-${i}`));     
+                    }
+
+                    // change bg + hover colours of number pads 0-9
+                    button.forEach((ids) => 
+                    {
+                        ids.classList.replace(ids.classList[0], bgClass[2]);
+                        ids.classList.replace(ids.classList[1], `hover:${bgClass[3]}`);
+                    });  
+                }
+
+                widget();
+                panels();
+                buttons();
+                pad();
+            }
+
+            timer();
+        }
+
+        switchCards();
+    }
+
     localStorage.setItem(themeType, "yellow");
 }
 function indigoMode()
@@ -365,6 +808,169 @@ function indigoMode()
 
             timer();
             stopwatch();
+        }
+
+        switchCards();
+    }
+
+    // stopwatch page
+    if (document.getElementById("stopwatch-page"))
+    {
+        const switchCards = () => 
+        {
+            const bgClass = ["bg-indigo-400", "bg-indigo-500", "bg-indigo-600", "bg-indigo-700", "bg-indigo-800", "bg-indigo-900", "bg-indigo-950"];
+
+            // progress bar
+            const progressBar = () => 
+            {
+                const bar = document.getElementById("stopwatch-bar");
+                bar.classList.replace(bar.classList[3], bgClass[6]);
+            }
+            // stopwatch
+            const stopwatch = () =>
+            {
+                let widget = function()
+                {
+                    const w = document.getElementById("stopwatch-widget");
+                    w.classList.replace(w.classList[1], "border-indigo-950");
+                    w.classList.replace(w.classList[7], bgClass[5]);
+                }
+                let buttons = function()
+                {
+                    const btnList = ["start-stopwatch", "stop-stopwatch", "reset-stopwatch", "lap-stopwatch"];
+
+                    let x = 0;
+                    while (x < btnList.length)
+                    {
+                        document.querySelector(`#${btnList[x]}`).classList.replace(document.getElementById(btnList[x]).classList[0], bgClass[2]);
+                        document.querySelector(`#${btnList[x]}`).classList.replace(document.getElementById(btnList[x]).classList[1], "hover:bg-indigo-700");
+                        x++;
+                    }
+                }
+                
+                widget();
+                buttons();
+            }
+            // lap card
+            const lapCard = () => 
+            {
+                const x = document.querySelector("#lap-card div");
+                const y = document.querySelector("#lap-card-div");
+
+                x.classList.replace(x.classList[0], bgClass[6]);
+                y.classList.replace(y.classList[0], bgClass[4]);
+            }
+            // set card
+            const setCard = () => 
+            {
+                const x = document.querySelector("#set-card div");
+                const y = document.querySelector("#set-card-div");
+
+                x.classList.replace(x.classList[0], bgClass[6]);
+                y.classList.replace(y.classList[0], bgClass[4]);
+
+                const inputs = ["input-hours", "input-minutes", "input-seconds", "input-mlseconds"];
+
+                let z = 0;
+                while (z < inputs.length)
+                {
+                    document.querySelector(`#${inputs[z]}`).classList.replace(document.getElementById(inputs[z]).classList[0], bgClass[3]);
+                    z++;
+                }
+            }
+            // set card - button
+            const setBtn = () => 
+            {
+                const btn = document.getElementById("set-stopwatch");
+                btn.classList.replace(btn.classList[0], bgClass[2]);
+                btn.classList.replace(btn.classList[1], "hover:bg-indigo-700");
+            }
+            
+            progressBar();
+            stopwatch();
+            lapCard();
+            setCard();
+            setBtn();
+        }
+
+        switchCards();
+    }
+
+    // timer page
+    if (document.getElementById("timer-page"))
+    {
+        const switchCards = () => 
+        {
+            const bgClass = ["bg-indigo-400", "bg-indigo-500", "bg-indigo-600", "bg-indigo-700", "bg-indigo-800", "bg-indigo-900", "bg-indigo-950"];
+
+            // timer
+            const timer = () => 
+            {
+                let widget = function()
+                {
+                    const w = document.getElementById("timer-widget");
+                    w.classList.replace(w.classList[7], bgClass[5])
+                    w.classList.replace(w.classList[1], "border-indigo-950");
+                }
+                let panels = function()
+                {
+                    const panel = 
+                    [
+                        document.getElementById("buttons-panel-1"),
+                        document.getElementById("buttons-panel-2"),
+                        document.getElementById("buttons-panel-3"),
+                    ];
+
+                    panel[0].classList.replace(panel[0].classList[0], bgClass[6]);
+                    panel[1].classList.replace(panel[1].classList[0], bgClass[4]);
+                    panel[2].classList.replace(panel[2].classList[0], bgClass[6]);
+                }
+                let buttons = function()
+                {
+                    let button = 
+                    [
+                        document.getElementById("start-timer"),
+                        document.getElementById("stop-timer"),
+                        document.getElementById("reset-timer"),
+                    ];
+
+                    // start button
+                    button[0].classList.replace(button[0].classList[0], bgClass[2]);
+                    button[0].classList.replace(button[0].classList[1], `hover:${bgClass[3]}`);
+
+                    // stop button
+                    button[1].classList.replace(button[1].classList[0], bgClass[2]);
+                    button[1].classList.replace(button[1].classList[1], `hover:${bgClass[3]}`);
+
+                    // reset button
+                    button[2].classList.replace(button[2].classList[0], bgClass[2]);
+                    button[2].classList.replace(button[2].classList[1], `hover:${bgClass[3]}`);
+                }
+                let pad = function()
+                {
+                    let button = [];
+
+                    for (let i = 0; i <= 9; i++)
+                    {
+                        // add number pads 0-9 to array
+                        button.push(document.getElementById(`button-${i}`));     
+                    }
+
+                    // change bg + hover colours of number pads 0-9
+                    button.forEach((ids) => 
+                    {
+                        ids.classList.replace(ids.classList[0], bgClass[2]);
+                        ids.classList.replace(ids.classList[1], `hover:${bgClass[3]}`);
+                    });  
+                }
+
+                widget();
+                panels();
+                buttons();
+                pad();
+            }
+
+            timer();
         }
 
         switchCards();
@@ -432,42 +1038,168 @@ function roseMode()
         switchCards();
     }
 
-    localStorage.setItem(themeType, "rose");
-}
-
-// misc functions
-function swapBg700(selector, newColor) 
-{
-    const elements = document.querySelectorAll(selector);
-
-    elements.forEach(el => 
+    // stopwatch page
+    if (document.getElementById("stopwatch-page"))
     {
-        const currentBgClass = Array.from(el.classList).find(cls => cls.startsWith("bg-") && cls.endsWith("-700"));
+        const switchCards = () => 
+        {
+            const bgClass = ["bg-rose-400", "bg-rose-500", "bg-rose-600", "bg-rose-700", "bg-rose-800", "bg-rose-900", "bg-rose-950"];
 
-        if (currentBgClass) 
-        {
-            // Replace bg-<color>-700 to bg-<newColor>-700
-            el.classList.replace(currentBgClass, `bg-${newColor}-700`);
-        } else 
-        {
-            // add bg-<color>-700 if not found
-            el.classList.add(`bg-${newColor}-700`);
+            // progress bar
+            const progressBar = () => 
+            {
+                const bar = document.getElementById("stopwatch-bar");
+                bar.classList.replace(bar.classList[3], bgClass[6]);
+            }
+            // stopwatch
+            const stopwatch = () =>
+            {
+                let widget = function()
+                {
+                    const w = document.getElementById("stopwatch-widget");
+                    w.classList.replace(w.classList[1], "border-rose-950");
+                    w.classList.replace(w.classList[7], bgClass[5]);
+                }
+                let buttons = function()
+                {
+                    const btnList = ["start-stopwatch", "stop-stopwatch", "reset-stopwatch", "lap-stopwatch"];
+
+                    let x = 0;
+                    while (x < btnList.length)
+                    {
+                        document.querySelector(`#${btnList[x]}`).classList.replace(document.getElementById(btnList[x]).classList[0], bgClass[2]);
+                        document.querySelector(`#${btnList[x]}`).classList.replace(document.getElementById(btnList[x]).classList[1], "hover:bg-rose-700");
+                        x++;
+                    }
+                }
+                
+                widget();
+                buttons();
+            }
+            // lap card
+            const lapCard = () => 
+            {
+                const x = document.querySelector("#lap-card div");
+                const y = document.querySelector("#lap-card-div");
+
+                x.classList.replace(x.classList[0], bgClass[6]);
+                y.classList.replace(y.classList[0], bgClass[4]);
+            }
+            // set card
+            const setCard = () => 
+            {
+                const x = document.querySelector("#set-card div");
+                const y = document.querySelector("#set-card-div");
+
+                x.classList.replace(x.classList[0], bgClass[6]);
+                y.classList.replace(y.classList[0], bgClass[4]);
+
+                const inputs = ["input-hours", "input-minutes", "input-seconds", "input-mlseconds"];
+
+                let z = 0;
+                while (z < inputs.length)
+                {
+                    document.querySelector(`#${inputs[z]}`).classList.replace(document.getElementById(inputs[z]).classList[0], bgClass[3]);
+                    z++;
+                }
+            }
+            // set card - button
+            const setBtn = () => 
+            {
+                const btn = document.getElementById("set-stopwatch");
+                btn.classList.replace(btn.classList[0], bgClass[2]);
+                btn.classList.replace(btn.classList[1], "hover:bg-rose-700");
+            }
+            
+            progressBar();
+            stopwatch();
+            lapCard();
+            setCard();
+            setBtn();
         }
-    });
-}
 
-function swapBgClass(el, newColor, palette = "700") 
-{
-    const currentBg = Array.from(el.classList).find(cls =>
-        cls.startsWith("bg-") && cls.endsWith(`-${palette}`)
-    );
-
-    if (currentBg) 
-    {
-        el.classList.replace(currentBg, `bg-${newColor}-${palette}`);
-    } 
-    else 
-    {
-        el.classList.add(`bg-${newColor}-${palette}`);
+        switchCards();
     }
+
+    // timer page
+    if (document.getElementById("timer-page"))
+    {
+        const switchCards = () => 
+        {
+            const bgClass = ["bg-rose-400", "bg-rose-500", "bg-rose-600", "bg-rose-700", "bg-rose-800", "bg-rose-900", "bg-rose-950"];
+
+            // timer
+            const timer = () => 
+            {
+                let widget = function()
+                {
+                    const w = document.getElementById("timer-widget");
+                    w.classList.replace(w.classList[7], bgClass[5])
+                    w.classList.replace(w.classList[1], "border-rose-950");
+                }
+                let panels = function()
+                {
+                    const panel = 
+                    [
+                        document.getElementById("buttons-panel-1"),
+                        document.getElementById("buttons-panel-2"),
+                        document.getElementById("buttons-panel-3"),
+                    ];
+
+                    panel[0].classList.replace(panel[0].classList[0], bgClass[6]);
+                    panel[1].classList.replace(panel[1].classList[0], bgClass[4]);
+                    panel[2].classList.replace(panel[2].classList[0], bgClass[6]);
+                }
+                let buttons = function()
+                {
+                    let button = 
+                    [
+                        document.getElementById("start-timer"),
+                        document.getElementById("stop-timer"),
+                        document.getElementById("reset-timer"),
+                    ];
+
+                    // start button
+                    button[0].classList.replace(button[0].classList[0], bgClass[2]);
+                    button[0].classList.replace(button[0].classList[1], `hover:${bgClass[3]}`);
+
+                    // stop button
+                    button[1].classList.replace(button[1].classList[0], bgClass[2]);
+                    button[1].classList.replace(button[1].classList[1], `hover:${bgClass[3]}`);
+
+                    // reset button
+                    button[2].classList.replace(button[2].classList[0], bgClass[2]);
+                    button[2].classList.replace(button[2].classList[1], `hover:${bgClass[3]}`);
+                }
+                let pad = function()
+                {
+                    let button = [];
+
+                    for (let i = 0; i <= 9; i++)
+                    {
+                        // add number pads 0-9 to array
+                        button.push(document.getElementById(`button-${i}`));     
+                    }
+
+                    // change bg + hover colours of number pads 0-9
+                    button.forEach((ids) => 
+                    {
+                        ids.classList.replace(ids.classList[0], bgClass[2]);
+                        ids.classList.replace(ids.classList[1], `hover:${bgClass[3]}`);
+                    });  
+                }
+
+                widget();
+                panels();
+                buttons();
+                pad();
+            }
+
+            timer();
+        }
+
+        switchCards();
+    }
+
+    localStorage.setItem(themeType, "rose");
 }

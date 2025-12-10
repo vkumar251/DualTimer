@@ -340,6 +340,7 @@ const createSidebar = () =>
     `
     <div id="sidebar-menu">
         <ul id="sidebar-menu-list" class="text-zinc-200 text-2xl">
+        <li><a href="index.html" class="${sidebar.getBgHoverColor()} block text-center p-2">Home</a></li>
             <li><a href="timer.html" class="${sidebar.getBgHoverColor()} block text-center p-2">Timer</a></li>
             <li><a href="stopwatch.html" class="${sidebar.getBgHoverColor()} block text-center p-2">Stopwatch</a></li>
         </ul>

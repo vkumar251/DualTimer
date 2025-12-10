@@ -269,6 +269,6 @@ function renumberLaps()
         }
     });
 
-    // update lapCounter so the next added lap gets the next number
+    // update lapCounter so next added lap gets the next number
     lapCounter = (lapRows.length + 1);
 }

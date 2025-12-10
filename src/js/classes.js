@@ -46,8 +46,12 @@ class Widget
     }
     setMlseconds(value)
     {
-        document.getElementById(this.getElement(3)).textContent = tidyInput(value);
+         // store real ms internally (0–999)
         this.mlseconds = value;
+
+        // show only first 2 digits (centiseconds) on widget
+        const centiseconds = Math.floor(value / 10);
+        document.getElementById(this.getElement(3)).textContent = tidyInput(centiseconds);
     }
     // increment (add) methods
     addHours(value)
@@ -106,15 +110,15 @@ class Widget
         if (value === undefined) 
         {
             counter++;
-            document.getElementById(this.getElement(3)).textContent = tidyInput(counter);
-            this.mlseconds = counter;
         }
         else
         {
             counter += value;
-            document.getElementById(this.getElement(3)).textContent = tidyInput(counter);
-            this.mlseconds = counter;
         }
+
+        this.mlseconds = counter;
+        const centiseconds = Math.floor(counter / 10);
+        document.getElementById(this.getElement(3)).textContent = tidyInput(centiseconds);
     }
     // decrement (subtract) methods
     subHours(value)
@@ -173,15 +177,16 @@ class Widget
         if (value === undefined) 
         {
             counter--;
-            document.getElementById(this.getElement(3)).textContent = tidyInput(counter);
-            this.mlseconds = counter;
         }
         else
         {
             counter -= value;
-            document.getElementById(this.getElement(3)).textContent = tidyInput(counter);
-            this.mlseconds = counter;
         }
+
+        this.mlseconds = counter;
+
+        const centiseconds = Math.floor(counter / 10);
+        document.getElementById(this.getElement(3)).textContent = tidyInput(centiseconds);
     }
 }
 
@@ -461,10 +466,6 @@ function tidyInput(integer)
                 return null;
                 break;
         }
-    }
-    else if (integer >= 60)
-    {
-        return null;
     }
     else
     {

@@ -40,11 +40,22 @@ if (stopwatch.getMlseconds() >= 1000)
 
     stopwatch.setSeconds(stopwatch.getSeconds());
 }
-
 const object = 
 {
     setBgPalette: function(value)
     {
         document.getElementById(this.getId()).classList.replace(`bg-${this.getBgColor()}-${this.getBgPalette()}00`, `bg-${this.getBgColor()}-${value}00`);
     }
+}
+function set()
+{
+    if (digits.length === 0)
+    {
+        return;
+    }
+
+    updateDisplay();
+
+    document.getElementById("message-set").classList.remove("hidden");
+    document.getElementById("message-reset").classList.add("hidden");
 }

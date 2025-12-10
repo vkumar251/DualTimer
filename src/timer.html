@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" id="timer-page">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible", content="IE-edge">
+        <link rel="stylesheet" href="./output.css" >
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" type='text/css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/fonts.css">
+        <title>Timer - DualTimer</title>
+    </head>
+    <body class="flex flex-col min-h-screen w-full m-0">
+        <header></header>
+        <section id="sidebar"></section>
+        <main>
+            <section>
+                <h1 class="vast-shadow-regular p-5 text-center text-shadow-lg text-shadow-violet-300 text-fuchsia-800 text-4xl sm:text-5xl">Timer</h1>
+                <!-- timer -->
+                <div id="timer-widget" class="border-3 border-cyan-950 text-center text-4xl mx-10 my-5 p-5 bg-cyan-900 rounded-4xl text-neutral-50 tracking-widest sm:text-5xl sm:max-w-sm sm:mx-auto md:text-6xl md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl">
+                 <!----><span id="hours">00</span><!--
+                     --><span class="text-neutral-300">:</span><span id="minutes">00</span><!--
+                     --><span class="text-neutral-300">:</span><span id="seconds">00</span><!--
+                     --><span class="text-neutral-300">:</span><span id="milliseconds">00</span>
+                </div>
+                <p id="message-error" class="mx-10 text-red-500 font-bold text-center text-xl italic">Error: Timer not set!</p>
+                <p id="message-alert" class="mx-10 text-amber-600 font-bold text-center text-xl italic">Timer is up!</p>
+                <div id="buttons-panel-1" class="bg-cyan-950 text-xl rounded-lg border-2 m-5 sm:mx-auto sm:w-[400px] md:w-[500px] lg:max-w-lg xl:max-w-xl">
+                    <div class="my-5 flex justify-center gap-10">
+                        <button id="start-timer" class="bg-cyan-600 hover:bg-cyan-700 border-2 text-center px-5 py-1 w-[120px] cursor-pointer rounded-lg lg:px-10 lg:w-[180px]">Start</button>
+                        <button id="stop-timer" class="bg-cyan-600 hover:bg-cyan-700 border-2 text-center px-5 py-1 w-[120px] cursor-pointer rounded-lg lg:px-10 lg:w-[180px]">Stop</button>
+                    </div>
+                </div>
+                <div id="buttons-panel-2" class="bg-cyan-800 text-xl p-5 rounded-lg border-2 mx-5 sm:m-auto sm:w-[400px] md:w-[500px] lg:max-w-lg xl:max-w-xl">
+                    <div class="m-auto grid grid-cols-3 grid-rows-3 gap-10 md:w-sm">
+                        <!---->
+                        <button id="button-7" class="bg-cyan-600 hover:bg-cyan-700 border-2 cursor-pointer text-center rounded-lg p-3">7</button>
+                        <button id="button-8" class="bg-cyan-600 hover:bg-cyan-700 border-2 cursor-pointer text-center rounded-lg p-3">8</button>
+                        <button id="button-9" class="bg-cyan-600 hover:bg-cyan-700 border-2 cursor-pointer text-center rounded-lg p-3">9</button>
+                        <!---->
+                        <button id="button-4" class="bg-cyan-600 hover:bg-cyan-700 border-2 cursor-pointer text-center rounded-lg p-3">4</button>
+                        <button id="button-5" class="bg-cyan-600 hover:bg-cyan-700 border-2 cursor-pointer text-center rounded-lg p-3">5</button>
+                        <button id="button-6" class="bg-cyan-600 hover:bg-cyan-700 border-2 cursor-pointer text-center rounded-lg p-3">6</button>
+                        <!---->
+                        <button id="button-1" class="bg-cyan-600 hover:bg-cyan-700 border-2 cursor-pointer text-center rounded-lg p-3">1</button>
+                        <button id="button-2" class="bg-cyan-600 hover:bg-cyan-700 border-2 cursor-pointer text-center rounded-lg p-3">2</button>
+                        <button id="button-3" class="bg-cyan-600 hover:bg-cyan-700 border-2 cursor-pointer text-center rounded-lg p-3">3</button>
+                        <!---->
+                        <button class="text-center rounded-lg p-3"></button>
+                        <button id="button-0" class="bg-cyan-600 hover:bg-cyan-700 border-2 cursor-pointer text-center rounded-lg p-3">0</button>
+                        <button class="text-center rounded-lg p-3"></button>
+                    </div>
+                </div>
+                <div id="buttons-panel-3" class="bg-cyan-950 text-xl rounded-lg border-2 m-5 sm:mx-auto sm:w-[400px] md:w-[500px] lg:max-w-lg xl:max-w-xl block">
+                    <div class="my-5 flex justify-center gap-10">
+                        <button id="reset-timer" class="bg-cyan-600 hover:bg-cyan-700 border-2 text-center px-5 py-1 w-[120px] cursor-pointer rounded-lg lg:px-10 lg:w-[180px]">Reset</button>
+                    </div>
+                    <p id="message-reset" class="text-center font-bold text-green-500 italic p-5">Timer successfully reset!</p>
+                </div>
+            </section>
+        </main>
+        <footer></footer>
+        <script src="js/menus.js"></script>
+        <script src="js/themes.js"></script>
+        <script src="js/classes.js"></script>
+        <script src="js/timer.js"></script>
+    </body>
+</html>
